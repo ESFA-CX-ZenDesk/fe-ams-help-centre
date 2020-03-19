@@ -1,0 +1,28 @@
+<div class="govuk-width-container">
+  {{#link 'help_center' class='govuk-back-link'}}
+    Help home
+  {{/link}}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl govuk-!-margin-top-8 govuk-!-margin-bottom-8">All <span class="app-text--lowercase">{{section.name}}</span> articles</h1>
+       {{#if section.description}}
+        <p class="govuk-body">{{section.description}}</p>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    {{#if section.articles}}
+      <ul class="govuk-list govuk-!-margin-bottom-7">
+        {{#each section.articles}}
+          <li class="govuk-!-margin-bottom-3">
+            <a href="{{url}}" class="govuk-link">{{title}}</a>
+          </li>
+        {{/each}}
+      </ul>
+    {{/if}}
+    {{pagination}}
+    </div>
+  </div>
+</div>

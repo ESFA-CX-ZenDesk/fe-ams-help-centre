@@ -1,0 +1,54 @@
+<div id="main-content" class="govuk-width-container">
+  
+  {{#link 'help_center' class='govuk-back-link'}}
+    Help home
+  {{/link}}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 title="{{article.title}}" class="govuk-heading-xl govuk-!-margin-top-8 govuk-!-margin-bottom-8">{{article.title}}</h1>
+      <!--p>{{article.created_at}}</p-->
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{article.body}}
+    </div>
+  </div>
+
+  {{#with article}}
+  
+           
+      <span class="vote-prompt" style=""><h4 style="margin-bottom:0px; padding-bottom:0px;"><h4>Is this page useful?</h4></span>
+  <br>
+  <br>
+        <div class="govuk-radios govuk-radios--inline" style="padding-top:5px">
+        <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="changed-name">
+          {{vote 'up' role='radio' class='article-vote-hidden' selected_class="voted"}}
+        	{{vote 'up' role='radio' class='article-vote article-vote-up' selected_class="voted"}}
+          </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="changed-name-2">
+        {{vote 'down' role='radio' class='article-vote-hidden' selected_class='voted'}}
+        {{vote 'down' role='radio' class='article-vote article-vote-down' selected_class='voted'}}
+        </label>
+            
+        <span class="article-vote-thanks govuk-!-margin-top-6">
+          Thank you for your feedback. You can   
+        <p>
+        
+        
+        </p>
+        </span>
+          {{/with}}
+      </div>
+      <br>
+      
+
+
+      
+</div>
