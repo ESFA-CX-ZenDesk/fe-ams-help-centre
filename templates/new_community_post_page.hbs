@@ -1,34 +1,49 @@
-<div class="container-divider"></div>
-<div class="container">
-  <nav class="sub-nav">
-    {{breadcrumbs}}
-    {{search submit=false}}
+<section class="app-section app-section--blue govuk-!-margin-top-3">
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">  
+        <h1 class="govuk-heading-m app-heading--section-blue">feconnect: Raise a question to the community</h1>
+       {{search submit=true class="app-search"}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="app-section">
+  <div class="govuk-width-container">  
+     <div class="container-divider"></div>
+  <nav class="govuk-breadcrumbs">
+      
   </nav>
-
+  <div class="govuk-summary-list">
   <h1 class="form-header">
-    {{t 'what_is_your_post_about'}}
+    {{t 'About_your_thread'}}
   </h1>
-
-  <div class="form">
+  <div class="form" align="center" style="border:1px">
     {{#form 'post' class='new_community_post'}}
       <div class="form-field">
-        {{#required 'title'}}
-          {{label 'title'}}
+        {{#required 'title' class="govuk-input"}}
+        <label class="govuk-label" for="more-detail">
+    Your thread
+  </label>
+      
+        {{label 'Your_Thread'}}{{t 'Thread'}}
         {{else}}
-          {{#label 'title'}}
+          {{#label 'Your_Thread'}} 
             {{t 'title_label'}}<span class="optional">({{t 'optional'}})</span>
+          
           {{/label}}
         {{/required}}
-        {{input 'title' autofocus=true}}
+        {{input 'title' autofocus=true class="govuk-label"}}
         {{#validate 'title'}}
           <div class="notification notification-error notification-inline">
             {{error 'title'}}
           </div>
         {{/validate}}
       </div>
-
+    
       {{suggestion_list class='suggestion-list'}}
-
+<br>
       <div class="form-field">
         {{#required 'details'}}
           {{label 'details'}}
@@ -53,15 +68,41 @@
             {{t 'topic_label'}}<span class="optional">({{t 'optional'}})</span>
           {{/label}}
         {{/required}}
-        {{select 'topic'}}
+        {{select 'topic' class="govuk-select"}}
         {{#validate 'topic'}}
           <div class="notification notification-error notification-inline">
             {{error 'topic'}}
           </div>
         {{/validate}}
       </div>
-
-      <footer>{{input type='submit'}}</footer>
+    <footer>      
+      {{input type='Submit' class="govuk-button" value="Submit"}}</footer>
     {{/form}}
   </div>
 </div>
+      <!-- Internal articles -->
+    		
+	    	<h2 class="govuk-heading-l">Internal articles</h2>
+	
+        <div class="govuk-grid-row block-grid">
+          		{{breadcrumbs}}
+          
+          
+          
+          
+          
+              <div class="govuk-grid-column-one-third govuk-!-margin-bottom-6">
+                <h3 class="govuk-heading-m"></h3>
+                <p></p>
+                <ul class="govuk-list">
+
+                </ul>
+              </div>
+          
+        </div>
+  </div>
+  
+
+
+
+

@@ -1,54 +1,131 @@
 <div id="main-content" class="govuk-width-container">
-  
-  {{#link 'help_center' class='govuk-back-link'}}
-    Help home
+
+   <div class="govuk-grid-row">
+     {{#link 'help_center' class='govuk-back-link' style="float:left"}}
+    Back
   {{/link}}
+</div>
+
+ <div class="govuk-grid-column-two-thirds">
+
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 title="{{article.title}}" class="govuk-heading-xl govuk-!-margin-top-8 govuk-!-margin-bottom-8">{{article.title}}</h1>
+  <h1 title="{{article.title}}" class="govuk-heading-xl govuk-!-margin-top-8 govuk-!-margin-bottom-8 govuk-!-margin-right-8" style="position: relative; right:-15px;">{{article.title}}</h1>
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"> 
+     <div class="govuk-grid-column-two-thirds">
       <!--p>{{article.created_at}}</p-->
     </div>
   </div>
+  </div>
 
   <div class="govuk-grid-row">
+     <div class="govuk-grid-column-one-third" style="float:right; position: relative; margin-top:none;">
+    
+        <aside class="article-sidebar" aria-labelledby="section-articles-title">
+      {{#if settings.show_articles_in_section}}
+        <div class="collapsible-sidebar">
+          
+          <span id="section-articles-title" class="collapsible-sidebar-title sidenav-title">
+                    
+          </span>
+          <div class="collapsible-sidebar-body" style="float:none;">
+            
+            <ul>
+              <!--
+              {{#each section.articles}}
+                <li>
+                  <a href="{{url}}" class="sidenav-item {{#is id ../article.id}}current-article{{/is}}">{{title}}</a>
+                </li>
+              {{/each}} --> 
+            </ul>
+            {{#if section.more_articles}}
+              <a href="{{section.url}}" class="article-sidebar-item">{{t 'see_more'}}</a>
+            {{/if}}
+          </div>
+        </div>
+      {{/if}}
+    </aside>
+       
+  </div>
     <div class="govuk-grid-column-two-thirds">
+      Published {{date article.created_at}} <br>       
+      Last updated {{date article.edited_at}}
+      <br>From <a href="https://gov.uk">Education and Skills Funding Agency</a> and <a href="https://gov.uk">Department for Education</a> 
+  		<br>
+      <br>
       {{article.body}}
     </div>
+    
   </div>
 
   {{#with article}}
-  
-           
-      <span class="vote-prompt" style=""><h4 style="margin-bottom:0px; padding-bottom:0px;"><h4>Is this page useful?</h4></span>
-  <br>
-  <br>
-        <div class="govuk-radios govuk-radios--inline" style="padding-top:5px">
-        <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes">
-        <label class="govuk-label govuk-radios__label" for="changed-name">
-          {{vote 'up' role='radio' class='article-vote-hidden' selected_class="voted"}}
-        	{{vote 'up' role='radio' class='article-vote article-vote-up' selected_class="voted"}}
-          </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no">
-        <label class="govuk-label govuk-radios__label" for="changed-name-2">
-        {{vote 'down' role='radio' class='article-vote-hidden' selected_class='voted'}}
-        {{vote 'down' role='radio' class='article-vote article-vote-down' selected_class='voted'}}
-        </label>
-            
-        <span class="article-vote-thanks govuk-!-margin-top-6">
-          Thank you for your feedback. You can   
-        <p>
-        
-        
-        </p>
-        </span>
+
+
+        <br>
+  	<div id="feedbackloop59">
+        <span class="vote-prompt" style=""><h4 style="margin-bottom:0px; padding-bottom:0px;">Is this page useful?</h4></span>
+          <br>
+          <br>
+                <div class="govuk-radios govuk-radios--inline" style="padding-top:5px">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes" onclick="displayFeedback()" {{#vote 'up'}}>{{/vote}}
+                <label class="govuk-label govuk-radios__label" for="changed-name">
+                  {{vote 'up' role='radio' class='article-vote-hidden' selected_class="voted"}} Yes
+                  
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no" onclick="displayFeedback()">
+                <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                {{vote 'down' role='radio' class='article-vote-hidden' selected_class='voted'}}  No
+                  
+                </label>
+              </div>
+              <br>              
           {{/with}}
-      </div>
-      <br>
-      
-
-
-      
+          </div>
 </div>
+
+
+  <div id="das-feedback-form" style="display: none;">
+        <form id="new_request" class="request-form" data-form="" data-form-type="request" action="/hc/en-gb/requests" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓">
+  
+					<br>
+          <label>Thank you for your vote, please leave more feedback below:</label>
+  
+    <div class="form-field text  required  request_description">
+            
+      <p id="request_description_hint" style="display: none;">Please enter your feedback.</p>
+    </div>
+
+    <a href="/hc/en-gb/requests/new?ticket_form_id=360000139898" target="_blank" onclick="hidefeedback25()" class="govuk-button">Click here to leave feedback</a>
+    <br>
+          <br>
+
+  <footer>
+    <!--<form action="https://c19-prepod.zendesk.com/hc/en-gb/requests/new?ticket_form_id=360000139898" method="get">
+    <input type="submit" value="Give Feedback2" 
+         name="Submit" id="frm1_submit" />
+      
+	</form>-->
+    
+    
+</div>
+
+<script type="text/javascript">
+      function displayFeedback() {
+        var feedbackDiv = document.getElementById("das-feedback-form");
+        if (feedbackDiv.style.display === "none") {
+          feedbackDiv.style.display = "block";
+        } 
+     } 
+  
+  
+</script>
+   <script type="text/javascript">       
+          function hidefeedback25() {
+  	var document.getElementById("feedbackloop59");	
+     feedbackloop59.style.display == "none";
+  				}
+  }
+          </script>
+

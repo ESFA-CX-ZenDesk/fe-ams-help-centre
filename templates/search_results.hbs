@@ -2,26 +2,50 @@
   {{#link 'help_center' class='govuk-back-link'}}
     Help home
   {{/link}}
+   <div class="search-results">
+    <aside class="search-results-sidebar">
+      {{#if help_center_filters}}
+        <section class="filters-in-section collapsible-sidebar">
+          <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_help_center'}}</h3>
+          <ul>
+            {{#each help_center_filters}}
+            	<li>
+                	<a href="{{url}}" class="sidenav-item" aria-selected="{{selected}}">{{name}} ({{count}})</a>
+            </li>
+            {{/each}}
+          </ul>
+        </section> 
+      {{/if}}       
+        </aside>
+    </div>
+  
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl govuk-!-margin-top-8 govuk-!-margin-bottom-8">{{t 'search_results'}}</h1>
       <div class="govuk-!-margin-bottom-6">
         {{search submit=true instant=settings.instant_search class='app-search app-search--black-border'}}
       </div>
-      <p class="govuk-body govuk-!-margin-bottom-0">{{t 'results' query=query count=results_count}}</p>
-    </div>
-  </div>
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+    </div> 
+          
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">          		
+     
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
     </div>
   </div>
-
-  <div class="govuk-grid-row">
+   
+    
     <div class="govuk-grid-column-two-thirds">
-
+    <section id="main-content" class="search-results-column">
+      <h1 class="search-results-subheading">
       {{#if article_results}}
+        
+         {{#is current_filter.identifier 'unified'}}
+          {{t 'results' query=query count=results_count}}
+        {{else}}
+
+           {{/is}}
+      </h1>
       <ul class="govuk-list">
         {{#each article_results}}
           <li class="govuk-!-margin-bottom-6">
@@ -43,8 +67,11 @@
         {{/link}}
       </p>
     {{/if}}
+        </section>
+      </div>
     {{pagination}}
-    </div>
-  </div>
-        
-</div>
+    </div>     
+</div>   
+      
+
+  

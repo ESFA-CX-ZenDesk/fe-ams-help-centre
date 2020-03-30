@@ -10,16 +10,16 @@
       {{/is}}
 
       {{#is error 'not_found'}}
-        <h1 class="govuk-heading-xl">{{t 'nonexistent_page'}}</h1>
+        <h1 class="govuk-heading-xl">Sorry, there is a problem with this service</h1>
         <p class="govuk-body">
-          {{t 'mistyped_address_or_moved_page'}}
+          Try again later
         </p>
       {{/is}}
 
       {{#link 'help_center'}}
         {{t 'back_to_homepage'}}
       {{/link}}
-
+		<br>
     </div>
   </div>
 </div>

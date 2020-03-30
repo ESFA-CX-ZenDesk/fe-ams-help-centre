@@ -1,15 +1,21 @@
-<div class="container-divider"></div>
-<div class="container">
-  <nav class="sub-nav">
-    {{breadcrumbs}}
-    {{search scoped=settings.scoped_community_search submit=false}}
-  </nav>
+<section class="app-section app-section--blue govuk-!-margin-top-3">
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">  
+        <h1 class="govuk-heading-m app-heading--section-blue">Get help with ESFA services</h1>
+        {{search submit=true instant=settings.instant_search class='app-search'}}
+      </div>
+    </div>
+  </div>
+</section>
 
+<section class="app-section">
+  <div class="govuk-width-container">  
   <div class="post-container">
     <div class="post">
       <article>
         <header class="post-header">
-          <div class="post-title">
+          <div class="post-title" style="Border:Solid 1px;">
             <h1 title="{{post.title}}">
               {{post.title}}
               {{#if post.internal}}
@@ -34,14 +40,14 @@
           {{/if}}
         </header>
 
-        <section class="post-info-container">
+        <section class="post-info-container" style>
           <div class="post-info">
             <div class="post-author">
               <div class="avatar post-avatar">
                 {{#if post.author.agent}}
                   <span class="icon-agent"></span>
                 {{/if}}
-                <img src="{{post.author.avatar_url}}" alt="" class="user-avatar"/>
+                
               </div>
               <div class="post-meta">
                 <span title="{{post.author.name}}">
@@ -52,10 +58,10 @@
 
                 <ul class="meta-group">
                   {{#if post.editor}}
-                    <li class="meta-data">{{date post.edited_at timeago=true}}</li>
-                    <li class="meta-data">{{t 'edited'}}</li>
+                    {{date post.edited_at timeago=true}}
+                    {{t 'edited'}}
                   {{else}}
-                    <li class="meta-data">{{date post.created_at timeago=true}}</li>
+                    {{date post.created_at timeago=true}}
                   {{/if}}
                 </ul>
               </div>
@@ -217,3 +223,13 @@
     </section>
   </div>
 </div>
+
+
+<div class="container-divider"></div>
+<div class="container">
+  <nav class="sub-nav">
+    {{breadcrumbs}}
+    {{search scoped=settings.scoped_community_search submit=false}}
+  </nav>
+
+  

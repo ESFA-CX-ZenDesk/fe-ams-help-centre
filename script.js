@@ -145,31 +145,30 @@ if(requestSubject.length){//if the contact form with subject search articles opt
         // }        
         
         /* Feedback page */
-        if(ticketForm == 360000307679) {
+        if(ticketForm == 360000139898) {
           $('#ticket-heading').html('Give feedback');
           $request_description_label.html('Your feedback');
-					$request_description_hint.hide();
+					
+          $request_description_hint.hide();
           $('<p class="govuk-hint govuk-body-s">We’ll send you an email to confirm we received your feedback.</p>').insertBefore($request_anonymous_requester_email);
           $('#request_subject').val('Feedback').parent().hide();
           $new_request.find('label[for=request_anonymous_requester_email]').html('Your email address (optional)');
-
-          // If we submit a form without email then supply an "anonymous" email to satisfy backend validation
           $new_request.submit(function(){
             if( !($request_anonymous_requester_email.val().trim()) )  {
-               $request_anonymous_requester_email.val("anonymous@example.com").css('color', '#fff'); // so there isn't a jarring email appear on screen;
+               $request_anonymous_requester_email.val("anonymous@exampleemail.com").css('color', '#fff'); // so there isn't a jarring email appear on screen;
             }
-          });      
-
+          }); // If we submit a form without email then supply an "anonymous" email to satisfy backend validation     
+ 
           // If we've reloaded an anonymous submission (due to other validation failures) then hide the anonymous email again
-          if($request_anonymous_requester_email.val() == 'anonymous@example.com'){
+          if($request_anonymous_requester_email.val() == 'anonymous@exampleemail.com'){
             $request_anonymous_requester_email.val('');
           }
 
         /* "Send a message" page */
-        }else if(ticketForm = 360000322720) {
+        }else if(ticketForm = 360000139778) {
            $request_description_label.html('Your message');
           $request_description_hint.hide(); 
-          $('<p class="govuk-hint govuk-body-s">We’ll send you an email to confirm we received your message. During our opening times, we’ll reply within 4 hours.</p>').insertBefore($request_anonymous_requester_email); 
+          $('<p class="govuk-hint govuk-body-s">We’ll send you an email to confirm we received your message. During our opening times, we’ll reply within 5 working days.</p>').insertBefore($request_anonymous_requester_email); 
         }
         
         $new_request.find('input[name="commit"]').val('Send');
