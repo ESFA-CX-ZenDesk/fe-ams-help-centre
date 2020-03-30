@@ -67,7 +67,7 @@
           <br>
                 <div class="govuk-radios govuk-radios--inline" style="padding-top:5px">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes" onclick="displayFeedback()" {{#vote 'up'}}>{{/vote}}
+                <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes" onclick="displayFeedback()" value="{{#vote 'up'}}{{/vote}}" />
                 <label class="govuk-label govuk-radios__label" for="changed-name">
                   {{vote 'up' role='radio' class='article-vote-hidden' selected_class="voted"}} Yes
                   
@@ -126,6 +126,6 @@
   	var document.getElementById("feedbackloop59");	
      feedbackloop59.style.display == "none";
   				}
-  }
+  
           </script>
 
